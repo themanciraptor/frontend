@@ -1,3 +1,4 @@
+import { LoginPageModule } from './login-page/login-page.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,7 +9,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    LoginPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
