@@ -1,0 +1,18 @@
+<mat-toolbar class="mat-elevation-z6" color="primary">
+  <span class="login-title">Sick Ass Student Management App</span>
+</mat-toolbar>
+<span class="page-container">
+  <mat-card class="login-card">
+    <h3 class="login-text">Login</h3>
+    <form class="login-form">
+      <mat-form-field class="email-field">
+        <input matInput type="email" placeholder="Email">
+      </mat-form-field>
+      <mat-form-field class="password-field">
+        <input matInput type="password" placeholder="Password">
+      </mat-form-field>
+    </form>
+    <button mat-flat-button (click)="loginClicked()" class="login-button" color="primary">Login</button>
+  </mat-card>
+  <span class="register-text">Don't have an account? <span (click)="registerClicked()" class="register-link">Register</span></span>
+</span>
