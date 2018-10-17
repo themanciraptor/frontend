@@ -1,11 +1,5 @@
 @import "~src/colors.scss";
 
-mat-toolbar {
-    z-index: 9999;
-    position: fixed;
-    top: 0;
-}
-
 .page-container {
     display: flex;
     flex-direction: column;
@@ -19,7 +13,6 @@ mat-toolbar {
 .login-card {
     width: 100%;
     max-width: 400px;
-    margin-top: 80px;
     display: flex;
     flex-direction: column;
 }
