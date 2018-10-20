@@ -1,0 +1,44 @@
+.landing-page-container{
+  background-image: url(unsplash.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: darkslateblue;
+  position: fixed;
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.blockquote-footer{
+  overflow: hidden;
+  text-align: center;
+  text-color: azure;
+  background-color: darkslateblue;
+  width: 100%; /* Full width */
+}
+
+.blockquote-footer a {
+  display: block;
+  color: azure;
+  padding: 14px 16px;
+  text-decoration: none;
+}
