@@ -12,3 +12,11 @@ script:
 	- ng lint
 	- ng test --watch false -cc
 	- ng build -bh "https://themanciraptor.github.io/frontend"
+
+deploy:
+	provider: pages
+	skip_cleanup: true
+	github_token: $GITHUB_TOKEN
+	local_dir: dist
+	on:
+		branch: master
