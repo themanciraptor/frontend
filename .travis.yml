@@ -10,8 +10,8 @@ branches:
 
 script:
  - ng lint
- - ng test --watch false -cc
- - ng build -bh "https://themanciraptor.github.io/frontend"
+ - ng test
+ - ng build -bh "https://themanciraptor.github.io/frontend/"
 
 deploy:
  provider: pages
@@ -19,4 +19,4 @@ deploy:
  github_token: $GITHUB_TOKEN
  local_dir: dist
  on:
- branch: master
+  branch: master
