@@ -4,6 +4,9 @@ node_js:
 sudo: true
 dist: trusty
 
+addons: 
+ firefox: latest
+
 branches:
  only:
  - master
