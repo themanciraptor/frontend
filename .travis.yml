@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+ - "11"
+sudo: true
+dist: trusty
+
+branches:
+ only:
+ - master
+
+script:
+ - ng lint
+ - ng build --prod --base-href "https://themanciraptor.github.io/frontend/"
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: dist/frontend
+ on:
+  branch: master
