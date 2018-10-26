@@ -7,11 +7,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { StudentHomepageComponent } from './homepages/student/student-homepage/student-homepage.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentHomepageComponent
+    StudentHomepageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
