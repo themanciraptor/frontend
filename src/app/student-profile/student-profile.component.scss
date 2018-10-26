@@ -6,6 +6,12 @@
   margin: 24px auto 0 auto;
 }
 
+mat-card {
+  mat-spinner {
+    margin: auto;
+  }
+}
+
 .row {
   margin-bottom: 16px;
   align-self: stretch;
@@ -15,7 +21,8 @@
 .multi-card-row {
   display: flex;
   &>* {
-    flex: 1 0 auto;
+    flex: 1 0 0;
+    height: fit-content;
     &:not(:last-child) {
       margin-right: 16px;
     }
@@ -31,5 +38,12 @@
     mat-icon {
       margin-right: 8px;
     }
+  }
+}
+
+mat-list-item {
+  .line-header {
+    font-weight: bold;
+    font-size: 14px;
   }
 }

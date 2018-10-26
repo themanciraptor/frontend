@@ -14,9 +14,26 @@
     </div>
     <div class="row multi-card-row">
         <mat-card class="profile-info-card">
-            <mat-card-title>Profile Info</mat-card-title>
+            <mat-card-title>Info</mat-card-title>
             <mat-card-content>
-                Stuff...
+                <ng-container *ngIf="student | async as st; else spinner">
+                    <mat-list role="list">
+                        <mat-list-item role="listitem">
+                            <mat-icon matListIcon>person</mat-icon>
+                            <h2 class="line-header" matLine>Name</h2>
+                            <p matLine>
+                                {{ st?.firstName }} {{ st?.lastName }}
+                            </p>
+                        </mat-list-item>
+                        <mat-list-item role="listitem">
+                            <mat-icon matListIcon>mail</mat-icon>
+                            <h2 class="line-header" matLine>Email</h2>
+                            <p matLine>
+                                {{ st?.email }}
+                            </p>
+                        </mat-list-item>
+                    </mat-list>
+                </ng-container>
             </mat-card-content>
         </mat-card>
         <mat-card>
@@ -27,3 +44,7 @@
         </mat-card>
     </div>
 </div>
+
+<ng-template #spinner>
+    <mat-spinner [diameter]="60"></mat-spinner>
+</ng-template>
