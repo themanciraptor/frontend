@@ -1,9 +1,13 @@
 @import "~src/colors.scss";
 
 .page-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url(../../assets/img/background.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .login-text {
@@ -11,9 +15,11 @@
 }
 
 .login-card {
+    margin-top: 24px;
     width: 100%;
     max-width: 400px;
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
 }
 
@@ -33,7 +39,7 @@
 }
 
 .register-text {
-    margin: 8px auto 0 auto;
+    margin: 16px auto 0 auto;
 }
 
 .register-link {
