@@ -1,6 +1,12 @@
+[![Build Status](https://travis-ci.com/themanciraptor/frontend.svg?token=h15xxQc4zucMMWrmt91i&branch=master)](https://travis-ci.com/themanciraptor/frontend)
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+
+## Making additions
+
+Always commit package-lock.json and package.json files after an npm install. This allows the CI server to properly run your build.
 
 ## Development server
 
