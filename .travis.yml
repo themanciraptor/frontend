@@ -9,7 +9,6 @@ branches:
  - master
 
 script:
- - npm install
  - ng lint
  - ng build --prod --base-href "https://themanciraptor.github.io/frontend/"
 
