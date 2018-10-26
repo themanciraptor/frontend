@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatListModule } from "@angular/material";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentProfileComponent
+    StudentProfileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
