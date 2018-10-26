@@ -22,7 +22,7 @@ before_install:
 
 script:
  - ng lint
- - npm test
+ - ng test --watch=false
  - ng build --prod --base-href "https://themanciraptor.github.io/frontend/"
 
 deploy:
