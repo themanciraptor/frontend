@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-student-profile',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentProfileComponent implements OnInit {
 
-  constructor() { }
+  private studentId: Observable<string>;
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.studentId = this.route.paramMap.pipe(
+      map(params => params.get('studentId'))
+    );
+    this.studentId.subscribe(console.log);
   }
 
 }

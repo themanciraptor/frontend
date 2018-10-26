@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { MatButtonModule, MatCardModule, MatIconModule, MatListModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,10 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
     BrowserAnimationsModule,
     LoginPageModule,
     MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
     AppRoutingModule
   ],
   providers: [],

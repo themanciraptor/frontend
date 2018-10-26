@@ -6,7 +6,7 @@ import {StudentProfileComponent} from "./student-profile/student-profile.compone
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'profile', component: StudentProfileComponent }
+  { path: 'profile/:studentId', component: StudentProfileComponent }
 ];
 
 @NgModule({
