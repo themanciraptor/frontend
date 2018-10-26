@@ -7,8 +7,7 @@ import {StudentProfileComponent} from "./student-profile/student-profile.compone
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'profile/:studentId', component: StudentProfileComponent }
-  { path: 'index', component: StudentHomepageComponent },
+  { path: 'profile/:studentId', component: StudentProfileComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
