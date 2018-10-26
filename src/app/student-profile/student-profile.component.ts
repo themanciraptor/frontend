@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, switchMap } from 'rxjs/operators';
+import { Student } from '../models/Student';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-student-profile',
@@ -10,17 +12,19 @@ import { map } from "rxjs/operators";
 })
 export class StudentProfileComponent implements OnInit {
 
-  private studentId: Observable<string>;
+  private student: Observable<Student>;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private studentService: StudentService
   ) { }
 
   ngOnInit() {
-    this.studentId = this.route.paramMap.pipe(
-      map(params => params.get('studentId'))
+    this.student = this.route.paramMap.pipe(
+      map(params => params.get('studentId')),
+      switchMap(studentId => this.studentService.getStudentInfo(studentId))
     );
-    this.studentId.subscribe(console.log);
+    this.student.subscribe(console.log);
   }
 
 }
