@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { map, switchMap } from 'rxjs/operators';
 import { Student } from '../models/Student';
 import { StudentService } from '../services/student.service';
+import { StudentTermData } from "../models/StudentTermData";
 
 @Component({
   selector: 'app-student-profile',
@@ -12,7 +13,10 @@ import { StudentService } from '../services/student.service';
 })
 export class StudentProfileComponent implements OnInit {
 
-  private student: Observable<Student>;
+  student: Observable<Student>;
+  studentTermData: Observable<StudentTermData[]>;
+
+  displayedColumns: string[] = ['course', 'term', 'collegeId', 'status'];
 
   constructor(
     private route: ActivatedRoute,
@@ -20,11 +24,16 @@ export class StudentProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.student = this.route.paramMap.pipe(
-      map(params => params.get('studentId')),
-      switchMap(studentId => this.studentService.getStudentInfo(studentId))
+    const studentId = this.route.paramMap.pipe(
+      map(params => params.get('studentId'))
     );
-    this.student.subscribe(console.log);
+    this.student = studentId.pipe(
+      switchMap(id => this.studentService.getStudentInfo(id))
+    );
+    this.studentTermData = studentId.pipe(
+      switchMap(id => this.studentService.getRegistrationInfo(id))
+    );
+    this.studentTermData.subscribe(console.log);
   }
 
 }

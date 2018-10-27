@@ -4,11 +4,26 @@
             <mat-card-title>Registration Status</mat-card-title>
             <button mat-flat-button color="accent" class="apply-button"><mat-icon>school</mat-icon>Apply</button>
             <mat-card-content>
-                <mat-list role="list">
-                    <mat-list-item role="listitem">Item 1</mat-list-item>
-                    <mat-list-item role="listitem">Item 2</mat-list-item>
-                    <mat-list-item role="listitem">Item 3</mat-list-item>
-                </mat-list>
+                <table mat-table *ngIf="studentTermData | async as std; else spinner" [dataSource]="std">
+                    <ng-container matColumnDef="course">
+                        <th mat-header-cell *matHeaderCellDef>Course Name</th>
+                        <td mat-cell *matCellDef="let data"> {{data.course}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="term">
+                        <th mat-header-cell *matHeaderCellDef>Term</th>
+                        <td mat-cell *matCellDef="let data"> {{data.term}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="collegeId">
+                        <th mat-header-cell *matHeaderCellDef>Institution</th>
+                        <td mat-cell *matCellDef="let data"> {{data.collegeId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef>Enrollment Status</th>
+                        <td mat-cell *matCellDef="let data"> {{data.enrollmentStatus}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
             </mat-card-content>
         </mat-card>
     </div>
@@ -37,7 +52,7 @@
             </mat-card-content>
         </mat-card>
         <mat-card>
-            <mat-card-title>Another card</mat-card-title>
+            <mat-card-title>Documents</mat-card-title>
             <mat-card-content>
                 More stuff...
             </mat-card-content>
