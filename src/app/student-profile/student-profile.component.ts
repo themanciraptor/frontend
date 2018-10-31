@@ -33,7 +33,6 @@ export class StudentProfileComponent implements OnInit {
     this.studentTermData = studentId.pipe(
       switchMap(id => this.studentService.getRegistrationInfo(id))
     );
-    this.studentTermData.subscribe(console.log);
   }
 
 }
