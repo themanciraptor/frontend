@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Student } from '../models/Student';
 import { StudentService } from '../services/student.service';
-import { StudentTermData } from "../models/StudentTermData";
+import { StudentTermData } from '../models/StudentTermData';
 
 @Component({
   selector: 'app-student-profile',
