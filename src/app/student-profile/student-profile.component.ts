@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Student } from '../models/Student';
 import { StudentService } from '../services/student.service';
+import { Student } from '../models/Student';
 import { StudentTermData } from '../models/StudentTermData';
+import { Document } from './../models/Document';
 
 @Component({
   selector: 'app-student-profile',
@@ -15,6 +16,7 @@ export class StudentProfileComponent implements OnInit {
 
   student: Observable<Student>;
   studentTermData: Observable<StudentTermData[]>;
+  documents: Observable<Document[]>;
 
   displayedColumns: string[] = ['institution', 'term', 'status'];
 
@@ -32,6 +34,9 @@ export class StudentProfileComponent implements OnInit {
     );
     this.studentTermData = studentId.pipe(
       switchMap(id => this.studentService.getRegistrationInfo(id))
+    );
+    this.documents = studentId.pipe(
+      switchMap(id => this.studentService.getDocuments(id))
     );
   }
 

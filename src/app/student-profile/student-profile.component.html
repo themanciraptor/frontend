@@ -50,7 +50,15 @@
         <mat-card>
             <mat-card-title>Documents</mat-card-title>
             <mat-card-content>
-                More stuff...
+                <ng-container *ngIf="documents | async as docs; else spinner">
+                    <mat-list role="list">
+                        <mat-list-item *ngFor="let doc of docs" role="listitem">
+                            <p matLine class="document-name">
+                                {{ doc?.name }}
+                            </p>
+                        </mat-list-item>
+                    </mat-list>
+                </ng-container>
             </mat-card-content>
         </mat-card>
     </div>
