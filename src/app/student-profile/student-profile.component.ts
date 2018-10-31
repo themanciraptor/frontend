@@ -16,7 +16,7 @@ export class StudentProfileComponent implements OnInit {
   student: Observable<Student>;
   studentTermData: Observable<StudentTermData[]>;
 
-  displayedColumns: string[] = ['course', 'term', 'collegeId', 'status'];
+  displayedColumns: string[] = ['institution', 'term', 'status'];
 
   constructor(
     private route: ActivatedRoute,

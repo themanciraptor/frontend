@@ -17,17 +17,15 @@ export class StudentService {
       switchMap(() => observableOf([
         {
           id: studentId,
-          course: "CS372",
           enrollmentStatus: "ENROLLED",
           term: "Fall/2018",
-          collegeId: "UofR"
+          institution: "University of Regina"
         },
         {
           id: studentId,
-          course: "CS427",
-          enrollmentStatus: "ENROLLED",
+          enrollmentStatus: "APPLIED",
           term: "Fall/2018",
-          collegeId: "UofR"
+          institution: "Yale"
         }
       ]))
     );

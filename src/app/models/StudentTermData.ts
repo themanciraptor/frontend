@@ -1,7 +1,6 @@
 export interface StudentTermData {
   id: string;
-  course: string;
-  enrollmentStatus: string;
+  institution: string;
   term: string;
-  collegeId: string;
+  enrollmentStatus: string;
 }
