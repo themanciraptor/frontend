@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { StudentService } from '../services/student.service';
 import { Student } from '../models/Student';
 import { StudentTermData } from '../models/StudentTermData';
 import { Document } from './../models/Document';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-student-profile',
@@ -14,30 +16,84 @@ import { Document } from './../models/Document';
 })
 export class StudentProfileComponent implements OnInit {
 
-  student: Observable<Student>;
-  studentTermData: Observable<StudentTermData[]>;
-  documents: Observable<Document[]>;
+  student$: Observable<Student>;
+  studentTermData$: Observable<StudentTermData[]>;
+  documents$: Observable<Document[]>;
+
+  studentTermData$$: BehaviorSubject<StudentTermData[]>;
 
   displayedColumns: string[] = ['institution', 'term', 'status'];
 
   constructor(
     private route: ActivatedRoute,
-    private studentService: StudentService
+    private studentService: StudentService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
+    this.studentTermData$$ = new BehaviorSubject<StudentTermData[]>(null);
+
     const studentId = this.route.paramMap.pipe(
       map(params => params.get('studentId'))
     );
-    this.student = studentId.pipe(
+    this.student$ = studentId.pipe(
       switchMap(id => this.studentService.getStudentInfo(id))
     );
-    this.studentTermData = studentId.pipe(
+    this.studentTermData$ = studentId.pipe(
       switchMap(id => this.studentService.getRegistrationInfo(id))
     );
-    this.documents = studentId.pipe(
+    this.documents$ = studentId.pipe(
       switchMap(id => this.studentService.getDocuments(id))
     );
+
+    this.studentTermData$.subscribe(data => this.studentTermData$$.next(data));
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogRegister, {width: '600px'});
+    dialogRef.afterClosed().subscribe((result: StudentTermData) => {
+      this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result))
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-register',
+  templateUrl: 'dialog-register.html',
+})
+export class DialogRegister {
+
+  registrationData: StudentTermData = {
+    id: null,
+    institution: null,
+    term: null,
+    enrollmentStatus: 'APPLIED'
+  };
+
+  selectedInstitution: string;
+  selectedTerm: string;
+
+  institutions: string[] = ['University of Butts', 'Shit College', 'Alberta School of Stink'];
+  terms: string[] = ['Fall/2018', 'Winter/2019', 'Spring/2019', 'Summer/2019'];
+
+  constructor(public dialogRef: MatDialogRef<DialogRegister>) {}
+
+  applyDisabled() {
+    return !this.selectedInstitution || !this.selectedTerm;
+  }
+
+  onCancelClick(): void {
+    this.dialogRef.close();
+  }
+
+  get registrationResult(): StudentTermData {
+    return {
+      id: null,
+      institution: this.selectedInstitution,
+      term: this.selectedTerm,
+      enrollmentStatus: 'APPLIED'
+    };
   }
 
 }
