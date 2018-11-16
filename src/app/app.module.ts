@@ -5,14 +5,22 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { StudentHomepageComponent } from './homepages/student/student-homepage/student-homepage.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatTableModule
+} from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentHomepageComponent,
+    StudentProfileComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -20,6 +28,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserAnimationsModule,
     LoginPageModule,
     MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
     AppRoutingModule
   ],
   providers: [],
