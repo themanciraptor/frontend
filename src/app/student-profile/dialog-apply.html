@@ -1,4 +1,4 @@
-<h1 mat-dialog-title cdkFocusInitial>Register</h1>
+<h1 mat-dialog-title cdkFocusInitial>Select College and Term</h1>
 <div mat-dialog-content>
     <mat-form-field>
         <mat-select placeholder="Institution" [(value)]="selectedInstitution">
@@ -17,5 +17,5 @@
 </div>
 <div mat-dialog-actions align="end">
     <button mat-button (click)="onCancelClick()">Cancel</button>
-    <button mat-flat-button [disabled]="applyDisabled()" [mat-dialog-close]="registrationResult">Apply</button>
+    <button mat-flat-button [disabled]="applyDisabled()" [mat-dialog-close]="applyDialogResult">Apply</button>
 </div>

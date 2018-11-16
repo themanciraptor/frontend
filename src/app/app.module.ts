@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DialogRegister, StudentProfileComponent } from './student-profile/student-profile.component';
+import { DialogApply, StudentProfileComponent } from './student-profile/student-profile.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -23,7 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppComponent,
     StudentProfileComponent,
     PageNotFoundComponent,
-    DialogRegister
+    DialogApply
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatSelectModule,
     AppRoutingModule
   ],
-  entryComponents: [DialogRegister],
+  entryComponents: [DialogApply],
   providers: [],
   bootstrap: [AppComponent]
 })

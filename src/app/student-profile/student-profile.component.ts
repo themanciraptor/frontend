@@ -50,7 +50,7 @@ export class StudentProfileComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogRegister, {width: '600px'});
+    const dialogRef = this.dialog.open(DialogApply, {width: '600px'});
     dialogRef.afterClosed().subscribe((result: StudentTermData) => {
       this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result))
     });
@@ -59,17 +59,10 @@ export class StudentProfileComponent implements OnInit {
 }
 
 @Component({
-  selector: 'dialog-register',
-  templateUrl: 'dialog-register.html',
+  selector: 'dialog-apply',
+  templateUrl: 'dialog-apply.html',
 })
-export class DialogRegister {
-
-  registrationData: StudentTermData = {
-    id: null,
-    institution: null,
-    term: null,
-    enrollmentStatus: 'APPLIED'
-  };
+export class DialogApply {
 
   selectedInstitution: string;
   selectedTerm: string;
@@ -77,7 +70,7 @@ export class DialogRegister {
   institutions: string[] = ['University of Butts', 'Shit College', 'Alberta School of Stink'];
   terms: string[] = ['Fall/2018', 'Winter/2019', 'Spring/2019', 'Summer/2019'];
 
-  constructor(public dialogRef: MatDialogRef<DialogRegister>) {}
+  constructor(public dialogRef: MatDialogRef<DialogApply>) {}
 
   applyDisabled() {
     return !this.selectedInstitution || !this.selectedTerm;
@@ -87,7 +80,7 @@ export class DialogRegister {
     this.dialogRef.close();
   }
 
-  get registrationResult(): StudentTermData {
+  get applyDialogResult(): StudentTermData {
     return {
       id: null,
       institution: this.selectedInstitution,
