@@ -8,13 +8,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogApply, StudentProfileComponent } from './student-profile/student-profile.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatDialogModule, MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule, MatFormFieldModule,
   MatIconModule,
   MatListModule,
   MatProgressSpinnerModule, MatSelectModule,
-    MatTableModule,
+  MatTableModule,
 } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
