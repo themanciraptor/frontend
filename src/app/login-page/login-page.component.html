@@ -1,15 +1,42 @@
-<span class="page-container">
-  <mat-card class="login-card">
-    <h3 class="login-text">Login</h3>
-    <form class="login-form">
-      <mat-form-field class="email-field">
-        <input matInput type="email" placeholder="Email">
-      </mat-form-field>
-      <mat-form-field class="password-field">
-        <input matInput type="password" placeholder="Password">
-      </mat-form-field>
-    </form>
-    <button mat-flat-button (click)="loginClicked()" class="login-button" color="primary">Login</button>
-    <span class="register-text">Don't have an account? <span (click)="registerClicked()" class="register-link">Register</span></span>
-  </mat-card>
-</span>
+<div class="page-container">
+    <mat-card class="login-card">
+        <h3 class="login-text">Welcome to SASMA!</h3>
+
+        <mat-tab-group mat-stretch-tabs>
+            <mat-tab label="Login">
+                <form class="login-form">
+                    <mat-form-field class="email-field">
+                        <input matInput type="email" placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field class="password-field">
+                        <input matInput type="password" placeholder="Password">
+                    </mat-form-field>
+                </form>
+                <div class="text-center">
+                    <button mat-flat-button (click)="loginClicked()" class="login-button" color="primary">Login
+                    </button>
+                </div>
+            </mat-tab>
+            <mat-tab label="Register">
+                <form class="login-form">
+                    <mat-form-field class="email-field">
+                        <input matInput type="email" placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field class="password-field">
+                        <input matInput type="password" placeholder="Password">
+                    </mat-form-field>
+                    <mat-form-field class="password-field">
+                        <input matInput type="password" placeholder="Confirm password!">
+                    </mat-form-field>
+                </form>
+                <div class="text-center">
+                    <button mat-flat-button (click)="loginClicked()" class="register-button" color="primary">Register
+                    </button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <!--<span class="register-text">Don't have an account? <span (click)="registerClicked()"-->
+                                                                 <!--class="register-link">Register</span></span>-->
+    </mat-card>
+</div>
+
