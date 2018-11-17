@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { StudentService } from '../services/student.service';
 import { Student } from '../models/Student';
 import { StudentTermData } from '../models/StudentTermData';
 import { Document } from './../models/Document';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ApplicationService } from '../services/application.service';
 
 @Component({
   selector: 'app-student-profile',
@@ -46,13 +46,15 @@ export class StudentProfileComponent implements OnInit {
       switchMap(id => this.studentService.getDocuments(id))
     );
 
-    this.studentTermData$.subscribe(data => this.studentTermData$$.next(data));
+    this.studentTermData$.subscribe((data: StudentTermData[]) => this.studentTermData$$.next(data));
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogApply, {width: '600px'});
     dialogRef.afterClosed().subscribe((result: StudentTermData) => {
-      this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result))
+      if (result) {
+        this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result))
+      }
     });
   }
 
@@ -61,19 +63,40 @@ export class StudentProfileComponent implements OnInit {
 @Component({
   selector: 'dialog-apply',
   templateUrl: 'dialog-apply.html',
+  styles: [`
+    .form {
+        display: flex;
+        justify-content: center;
+    }
+    mat-form-field {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .select-institution {
+        flex: 1 0 auto;
+    }
+    mat-spinner {
+        margin: auto;
+    }
+  `]
 })
 export class DialogApply {
 
   selectedInstitution: string;
   selectedTerm: string;
 
-  institutions: string[] = ['University of Butts', 'Shit College', 'Alberta School of Stink'];
+  institutions$: Observable<string[]>;
   terms: string[] = ['Fall/2018', 'Winter/2019', 'Spring/2019', 'Summer/2019'];
 
-  constructor(public dialogRef: MatDialogRef<DialogApply>) {}
+  constructor(
+    public dialogRef: MatDialogRef<DialogApply>,
+    applicationService: ApplicationService
+  ) {
+    this.institutions$ = applicationService.getCollegeNames();
+  }
 
   applyDisabled() {
-    return !this.selectedInstitution || !this.selectedTerm;
+    return !(this.selectedInstitution && this.selectedTerm)
   }
 
   onCancelClick(): void {
