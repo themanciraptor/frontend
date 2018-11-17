@@ -8,12 +8,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatListModule,
-  MatProgressSpinnerModule,
-  MatTableModule
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
 } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
