@@ -1,4 +1,4 @@
 export class LoginData {
-    private email: string;
-    private password: string;
+  private email: string;
+  private password: string;
 }

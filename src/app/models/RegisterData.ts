@@ -1,5 +1,5 @@
 export class RegisterData {
-    private email: string;
-    private password: string;
-    private confirmPassword: string;
+  private email: string;
+  private password: string;
+  private confirmPassword: string;
 }

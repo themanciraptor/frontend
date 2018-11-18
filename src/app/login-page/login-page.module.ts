@@ -14,12 +14,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     MatTabsModule,
     MatButtonModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
-    exports: [
-        LoginPageComponent
-    ],
-    declarations: [LoginPageComponent]
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    LoginPageComponent
+  ],
+  declarations: [LoginPageComponent]
 })
 export class LoginPageModule {}
