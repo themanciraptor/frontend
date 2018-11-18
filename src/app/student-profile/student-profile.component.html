@@ -2,9 +2,9 @@
     <div class="row">
         <mat-card class="registration-card">
             <mat-card-title>Registration Status</mat-card-title>
-            <button mat-flat-button color="accent" class="apply-button"><mat-icon>school</mat-icon>Apply</button>
+            <button *ngIf="studentTermData$$ | async" mat-flat-button color="accent" class="apply-button" (click)="openDialog()"><mat-icon>school</mat-icon>Apply</button>
             <mat-card-content>
-                <table mat-table *ngIf="studentTermData | async as std; else spinner" [dataSource]="std">
+                <table mat-table *ngIf="studentTermData$$ | async as std; else spinner" [dataSource]="std">
                     <ng-container matColumnDef="institution">
                         <th mat-header-cell *matHeaderCellDef>Institution</th>
                         <td mat-cell *matCellDef="let data"> {{data?.institution}} </td>
@@ -27,7 +27,7 @@
         <mat-card class="profile-info-card">
             <mat-card-title>Info</mat-card-title>
             <mat-card-content>
-                <ng-container *ngIf="student | async as st; else spinner">
+                <ng-container *ngIf="student$ | async as st; else spinner">
                     <mat-list role="list">
                         <mat-list-item role="listitem">
                             <mat-icon matListIcon>person</mat-icon>
@@ -50,7 +50,7 @@
         <mat-card>
             <mat-card-title>Documents</mat-card-title>
             <mat-card-content>
-                <ng-container *ngIf="documents | async as docs; else spinner">
+                <ng-container *ngIf="documents$ | async as docs; else spinner">
                     <mat-list role="list">
                         <mat-list-item *ngFor="let doc of docs" role="listitem">
                             <p matLine class="document-name">

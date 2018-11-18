@@ -45,8 +45,7 @@ export class LoginPageComponent implements OnInit {
     if (this.registerForm.valid) {
       if (this.registerForm.value.password === this.registerForm.value.confirmPassword) {
         this.authService.register(this.registerForm.value);
-      }
-      else {
+      } else {
         this.registerForm.get('password').setErrors({matching: {password: 'Password did not match'}});
         this.registerForm.get('confirmPassword').setErrors({matching: {confirmPassword: 'Password did not match'}});
       }
