@@ -4,7 +4,7 @@
 
         <mat-tab-group mat-stretch-tabs>
             <mat-tab label="Login">
-                <form class="login-form" [formGroup]="loginForm">
+                <form class="login-page-form" [formGroup]="loginForm">
                     <mat-form-field class="email-field">
                         <input matInput type="email" placeholder="Email" formControlName="email">
                     </mat-form-field>
@@ -21,19 +21,19 @@
                 <!--</pre>-->
             </mat-tab>
             <mat-tab label="Register">
-                <form class="login-form">
+                <form class="login-page-form" [formGroup]="registerForm">
                     <mat-form-field class="email-field">
-                        <input matInput type="email" placeholder="Email">
+                        <input matInput type="email" placeholder="Email" formControlName="email">
                     </mat-form-field>
                     <mat-form-field class="password-field">
-                        <input matInput type="password" placeholder="Password">
+                        <input matInput type="password" placeholder="Password" formControlName="password">
                     </mat-form-field>
                     <mat-form-field class="password-field">
-                        <input matInput type="password" placeholder="Confirm password!">
+                        <input matInput type="password" placeholder="Confirm password!" formControlName="confirmPassword">
                     </mat-form-field>
                 </form>
                 <div class="text-center">
-                    <button mat-flat-button (click)="loginClicked()" class="register-button" color="primary">Register
+                    <button mat-flat-button (click)="registerClicked()" class="register-button" color="primary">Register
                     </button>
                 </div>
             </mat-tab>

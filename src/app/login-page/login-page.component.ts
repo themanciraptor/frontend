@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class LoginPageComponent implements OnInit {
 
     loginForm: FormGroup;
-    RegistrationForm: FormGroup;
+    registerForm: FormGroup;
 
     constructor(private authService: AuthService, private formBuilder: FormBuilder) {
 
@@ -20,6 +20,13 @@ export class LoginPageComponent implements OnInit {
         this.loginForm = this.formBuilder.group({
             'email': ['', Validators.required],
             'password': ['', Validators.required]
+        });
+
+
+        this.registerForm = this.formBuilder.group({
+            'email': ['', Validators.required],
+            'password': ['', Validators.required],
+            'confirmPassword': ['', Validators.required]
         });
     }
 
@@ -35,6 +42,14 @@ export class LoginPageComponent implements OnInit {
     registerClicked(): void {
         // do the registration
         console.log('Register clicked');
+        if (this.registerForm.valid) {
+            if (this.registerForm.value.password === this.registerForm.value.confirmPassword) {
+                this.authService.register(this.registerForm.value);
+            }
+            else {
+                this.registerForm.get('password').setErrors({matching: {password: 'Password did not match'}});
+                this.registerForm.get('confirmPassword').setErrors({matching: {confirmPassword: 'Password did not match'}});
+            }
+        }
     }
-
 }
