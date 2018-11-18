@@ -10,7 +10,8 @@ import { Document } from '../models/Document';
 })
 export class StudentService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getRegistrationInfo(studentId: string): Observable<StudentTermData[]> {
     // Stub -- fake loading before returning stub info
@@ -39,7 +40,8 @@ export class StudentService {
         firstName: 'Peen',
         lastName: 'Weinerstein',
         email: 'peen.weinerstein@gmail.com',
-        studentId: studentId
+        studentId: studentId,
+        address: '69 Mountain Bunker, City of Failure, USA'
       }))
     );
   }
