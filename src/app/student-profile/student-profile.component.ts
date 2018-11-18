@@ -50,10 +50,10 @@ export class StudentProfileComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogApply, {width: '600px'});
+    const dialogRef = this.dialog.open(DialogApplyComponent, {width: '600px'});
     dialogRef.afterClosed().subscribe((result: StudentTermData) => {
       if (result) {
-        this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result))
+        this.studentTermData$$.next(this.studentTermData$$.getValue().concat(result));
       }
     });
   }
@@ -61,7 +61,7 @@ export class StudentProfileComponent implements OnInit {
 }
 
 @Component({
-  selector: 'dialog-apply',
+  selector: 'app-dialog-apply',
   templateUrl: 'dialog-apply.html',
   styles: [`
     .form {
@@ -80,7 +80,7 @@ export class StudentProfileComponent implements OnInit {
     }
   `]
 })
-export class DialogApply {
+export class DialogApplyComponent {
 
   selectedInstitution: string;
   selectedTerm: string;
@@ -89,14 +89,14 @@ export class DialogApply {
   terms: string[] = ['Fall/2018', 'Winter/2019', 'Spring/2019', 'Summer/2019'];
 
   constructor(
-    public dialogRef: MatDialogRef<DialogApply>,
+    public dialogRef: MatDialogRef<DialogApplyComponent>,
     applicationService: ApplicationService
   ) {
     this.institutions$ = applicationService.getCollegeNames();
   }
 
   applyDisabled() {
-    return !(this.selectedInstitution && this.selectedTerm)
+    return !(this.selectedInstitution && this.selectedTerm);
   }
 
   onCancelClick(): void {
