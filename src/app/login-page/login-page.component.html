@@ -13,7 +13,7 @@
                     </mat-form-field>
                 </form>
                 <div class="text-center">
-                    <button mat-flat-button (click)="loginClicked()" class="login-button" color="primary">Login
+                    <button mat-flat-button (click)="loginClicked()" [disabled]="loading$$ | async" class="login-button" color="primary">Login
                     </button>
                 </div>
                 <!--<pre>-->

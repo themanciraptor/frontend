@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { LoginResponse } from './LoginResponse';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -12,16 +16,21 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  loading$$: BehaviorSubject<boolean>;
 
-  }
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.loading$$ = new BehaviorSubject(false);
+
     this.loginForm = this.formBuilder.group({
       'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
-
 
     this.registerForm = this.formBuilder.group({
       'email': ['', Validators.required],
@@ -31,10 +40,18 @@ export class LoginPageComponent implements OnInit {
   }
 
   loginClicked(): void {
-    // do the login
-    console.log('Login clicked');
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value);
+      this.loading$$.next(true)
+      this.authService.login(this.loginForm.value).pipe(take(1))
+        .subscribe((response: LoginResponse) => {
+          if (response.success) {
+            document.cookie = `session=${response.sessionId}`;
+            this.router.navigate([`/profile/${response.userId}`]);
+          } else {
+            this.loading$$.next(false);
+            return;
+          }
+        });
     }
 
   }
