@@ -10,7 +10,8 @@ import { Document } from '../models/Document';
 })
 export class StudentService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getRegistrationInfo(studentId: string): Observable<StudentTermData[]> {
     // Stub -- fake loading before returning stub info

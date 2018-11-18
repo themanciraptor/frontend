@@ -7,6 +7,7 @@ import { Observable, of as observableOf, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 const AUTH_URL = 'google.ca';
+
 // change it to your API end point - Riley/Hayden!
 
 @Injectable({
