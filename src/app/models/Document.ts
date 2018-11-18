@@ -1,3 +1,3 @@
 export interface Document {
-    name: string;
+  name: string;
 }

@@ -23,7 +23,8 @@ export class StudentProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     const studentId = this.route.paramMap.pipe(
