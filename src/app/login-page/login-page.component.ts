@@ -41,7 +41,7 @@ export class LoginPageComponent implements OnInit {
 
   loginClicked(): void {
     if (this.loginForm.valid) {
-      this.loading$$.next(true)
+      this.loading$$.next(true);
       this.authService.login(this.loginForm.value).pipe(take(1))
         .subscribe((response: LoginResponse) => {
           if (response.success) {
