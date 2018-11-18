@@ -3,4 +3,5 @@ export interface Student {
   lastName: string;
   email: string;
   studentId: string;
+  address: string;
 }
