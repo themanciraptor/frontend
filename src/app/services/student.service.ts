@@ -40,7 +40,8 @@ export class StudentService {
         firstName: 'Peen',
         lastName: 'Weinerstein',
         email: 'peen.weinerstein@gmail.com',
-        studentId: studentId
+        studentId: studentId,
+        address: '69 Mountain Bunker, City of Failure, USA'
       }))
     );
   }
