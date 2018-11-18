@@ -20,31 +20,31 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        StudentProfileComponent,
-        PageNotFoundComponent,
+  declarations: [
+    AppComponent,
+    StudentProfileComponent,
+    PageNotFoundComponent,
     DialogApplyComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        LoginPageModule,
-        MatToolbarModule,
-        HttpClientModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatDialogModule,
-      MatFormFieldModule,
-      MatSelectModule,
-      AppRoutingModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    LoginPageModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    AppRoutingModule
+  ],
   entryComponents: [DialogApplyComponent],
-    providers: [],
-    bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

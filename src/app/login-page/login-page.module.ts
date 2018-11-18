@@ -22,4 +22,4 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ],
     declarations: [LoginPageComponent]
 })
-export class LoginPageModule{}
+export class LoginPageModule {}
