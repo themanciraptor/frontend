@@ -16,6 +16,8 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
+  loginError: string;
+
   loading$$: BehaviorSubject<boolean>;
 
   constructor(
@@ -48,6 +50,7 @@ export class LoginPageComponent implements OnInit {
             document.cookie = `session=${response.sessionId}`;
             this.router.navigate([`/profile/${response.userId}`]);
           } else {
+            this.loginError = 'Error logging in';
             this.loading$$.next(false);
             return;
           }

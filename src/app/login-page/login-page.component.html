@@ -12,13 +12,11 @@
                         <input matInput type="password" placeholder="Password" formControlName="password">
                     </mat-form-field>
                 </form>
+                <div class="error">{{loginError}}</div>
                 <div class="text-center">
                     <button mat-flat-button (click)="loginClicked()" [disabled]="loading$$ | async" class="login-button" color="primary">Login
                     </button>
                 </div>
-                <!--<pre>-->
-                <!--{{loginForm.value |json}}-->
-                <!--</pre>-->
             </mat-tab>
             <mat-tab label="Register">
                 <form class="login-page-form" [formGroup]="registerForm">
