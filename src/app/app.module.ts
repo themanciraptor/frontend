@@ -24,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     StudentProfileComponent,
     PageNotFoundComponent,
-    DialogApplyComponent],
+    DialogApplyComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
