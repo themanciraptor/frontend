@@ -6,14 +6,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { DialogApplyComponent, StudentProfileComponent } from './student-profile/student-profile.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatTableModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule, MatFormFieldModule,
+  MatIconModule,
+  MatListModule,
+  MatProgressSpinnerModule, MatSelectModule,
+  MatTableModule,
 } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,8 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     declarations: [
         AppComponent,
         StudentProfileComponent,
-        PageNotFoundComponent
-    ],
+        PageNotFoundComponent,
+    DialogApplyComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -36,8 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
         MatListModule,
         MatProgressSpinnerModule,
         MatTableModule,
-        AppRoutingModule
+        MatDialogModule,
+      MatFormFieldModule,
+      MatSelectModule,
+      AppRoutingModule
     ],
+  entryComponents: [DialogApplyComponent],
     providers: [],
     bootstrap: [AppComponent]
 })
