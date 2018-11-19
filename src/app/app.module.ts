@@ -10,10 +10,13 @@ import { DialogApplyComponent, StudentProfileComponent } from './student-profile
 import {
   MatButtonModule,
   MatCardModule,
-  MatDialogModule, MatFormFieldModule,
+  MatDialogModule,
+  MatFormFieldModule,
   MatIconModule,
   MatListModule,
-  MatProgressSpinnerModule, MatSelectModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule,
   MatTableModule,
 } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -42,6 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   entryComponents: [DialogApplyComponent],
