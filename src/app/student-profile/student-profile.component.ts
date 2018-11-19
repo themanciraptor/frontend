@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of as observableOf } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { StudentService } from '../services/student.service';
 import { Student } from '../models/Student';
 import { StudentTermData } from '../models/StudentTermData';
@@ -40,7 +40,9 @@ export class StudentProfileComponent implements OnInit {
       switchMap(id => this.studentService.getStudentInfo(id))
     );
     this.studentTermData$ = studentId.pipe(
-      switchMap(id => this.studentService.getRegistrationInfo(id))
+      switchMap(id => this.studentService.getRegistrationInfo(id)),
+      catchError(err => observableOf([{id: null, enrollmentStatus: null,
+        term: null, institution: 'Error getting term data'}]))
     );
     this.documents$ = studentId.pipe(
       switchMap(id => this.studentService.getDocuments(id))
