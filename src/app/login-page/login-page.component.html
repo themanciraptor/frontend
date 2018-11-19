@@ -20,6 +20,15 @@
             </mat-tab>
             <mat-tab label="Register">
                 <form class="login-page-form" [formGroup]="registerForm">
+                    <mat-form-field class="firstname-field">
+                        <input matInput type="text" placeholder="First Name" formControlName="firstName">
+                    </mat-form-field>
+                    <mat-form-field class="lastname-field">
+                        <input matInput type="text" placeholder="Last Name" formControlName="lastName">
+                    </mat-form-field>
+                    <mat-form-field class="address-field">
+                        <input matInput type="text" placeholder="Address" formControlName="address">
+                    </mat-form-field>
                     <mat-form-field class="email-field">
                         <input matInput type="email" placeholder="Email" formControlName="email">
                     </mat-form-field>
