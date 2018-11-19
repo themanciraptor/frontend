@@ -5,6 +5,7 @@ import { RegisterData } from '../models/RegisterData';
 import { LoginResponse } from '../login-page/LoginResponse';
 import { Observable, of as observableOf, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { RegisterResponse } from './RegisterResponse';
 
 const AUTH_URL = 'google.ca';
 
@@ -29,9 +30,10 @@ export class AuthService {
     );
   }
 
-  register(registerModel: RegisterData) {
-    console.log('Registering with ', registerModel);
+  register(registerModel: RegisterData): Observable<RegisterResponse> {
     // this.http.post(`${AUTH_URL}/register`, registerModel);
-    // this is how youll make the call, just in case!
+    return timer(1000).pipe(
+      switchMap(() => observableOf({success: true}))
+    );
   }
 }

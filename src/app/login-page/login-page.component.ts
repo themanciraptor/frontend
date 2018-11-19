@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { take } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
+import { BehaviorSubject, Observable, timer } from 'rxjs';
 import { LoginResponse } from './LoginResponse';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { RegisterResponse } from '../services/RegisterResponse';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login-page',
@@ -25,14 +27,25 @@ export class LoginPageComponent implements OnInit {
   loading$$: BehaviorSubject<boolean>;
 
   constructor(
+    public snackBar: MatSnackBar,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private cookieService: CookieService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.checkLoggedIn();
+
+    timer(500).pipe(
+      switchMap(() => this.activatedRoute.queryParams),
+      map(params => params['registered'])
+    ).subscribe(showRegistrationSnackbar => {
+      if (showRegistrationSnackbar) {
+        this.snackBar.open('Registration successful!', null, {duration: 3000})
+      }
+    });
 
     this.loading$$ = new BehaviorSubject(false);
 
@@ -82,7 +95,12 @@ export class LoginPageComponent implements OnInit {
     console.log('Register clicked');
     if (this.registerForm.valid) {
       if (this.registerForm.value.password === this.registerForm.value.confirmPassword) {
-        this.authService.register(this.registerForm.value);
+        this.authService.register(this.registerForm.value).pipe(take(1))
+          .subscribe((response: RegisterResponse) => {
+            if (response.success) {
+              window.location.replace('/login?registered=true');
+            }
+          });
       } else {
         this.registerForm.get('password').setErrors({matching: {password: 'Password did not match'}});
         this.registerForm.get('confirmPassword').setErrors({matching: {confirmPassword: 'Password did not match'}});
