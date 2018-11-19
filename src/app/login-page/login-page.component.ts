@@ -43,7 +43,7 @@ export class LoginPageComponent implements OnInit {
       map(params => params['registered'])
     ).subscribe(showRegistrationSnackbar => {
       if (showRegistrationSnackbar) {
-        this.snackBar.open('Registration successful!', null, {duration: 3000})
+        this.snackBar.open('Registration successful!', null, {duration: 3000});
       }
     });
 
