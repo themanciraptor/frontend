@@ -4,17 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterData } from '../models/RegisterData';
 import { LoginResponse } from '../login-page/LoginResponse';
 import { Observable, of as observableOf, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { RegisterResponse } from './RegisterResponse';
 import { environment } from 'src/environments/environment.prod';
 
 const AUTH_URL = environment.apiURL;
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
