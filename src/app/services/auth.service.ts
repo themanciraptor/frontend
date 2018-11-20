@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginData } from '../models/LoginData';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RegisterData } from '../models/RegisterData';
 import { LoginResponse } from '../login-page/LoginResponse';
 import { Observable, of as observableOf, timer } from 'rxjs';
