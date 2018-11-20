@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { LoginData } from '../models/LoginData';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterData } from '../models/RegisterData';
 import { LoginResponse } from '../login-page/LoginResponse';
 import { Observable, of as observableOf, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { RegisterResponse } from './RegisterResponse';
+import { environment } from 'src/environments/environment.prod';
 
-const AUTH_URL = 'google.ca';
-
-// change it to your API end point - Riley/Hayden!
+const AUTH_URL = environment.apiURL;
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +25,10 @@ export class AuthService {
   }
 
   login(loginModel: LoginData): Observable<LoginResponse> {
-    // this.http.post(`${AUTH_URL}/login`, loginModel);
-    return timer(1000).pipe(
-      switchMap(() => observableOf({
-        success: true,
-        userId: '112',
-        sessionId: 'cool-session-id'
-      }))
-    );
+    return this.http.post<LoginResponse>(`${AUTH_URL}/login`, loginModel);
   }
 
   register(registerModel: RegisterData): Observable<RegisterResponse> {
-    // this.http.post(`${AUTH_URL}/register`, registerModel);
-    return timer(1000).pipe(
-      switchMap(() => observableOf({success: true}))
-    );
+    return this.http.post<RegisterResponse>(`${AUTH_URL}/register`, registerModel);
   }
 }
