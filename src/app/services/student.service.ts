@@ -16,12 +16,15 @@ export class StudentService {
   constructor(private http: HttpClient) {
   }
 
-  getRegistrationInfo(studentId: string): Observable<Object> {
-    return this.http.get(BASE_URL + 'studentterm');
+  getRegistrationInfo(studentId: string): Observable<any> {
+    let data = this.http.get(`${BASE_URL}/studentterm`);
+    return data;
   }
 
-  getStudentInfo(studentId: string): Observable<Object> {
-    return this.http.get(BASE_URL + 'student');
+  getStudentInfo(studentId: string): Observable<any> {
+    let data = this.http.get(`${BASE_URL}/student`);
+    console.log(data);
+    return data;
   }
 
   getDocuments(studentId: string): Observable<Document[]> {
