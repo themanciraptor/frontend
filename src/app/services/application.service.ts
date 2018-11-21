@@ -13,9 +13,9 @@ export class ApplicationService {
     // Stub -- fake loading before returning stub info
     return timer(1000).pipe(
       switchMap(() => observableOf([
-        'University of Butts',
-        'Shit College',
-        'Alberta School of Stink'
+        'British University of Technology and Tacos',
+        'American National University of Schooling',
+        'Alberta School of Science'
       ]))
     );
   }
